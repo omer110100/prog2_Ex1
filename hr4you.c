@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "prog2_ex1.h"
 
-//bla 
+//bla2 
 bool InputFileIsOpend = false, OutputFileIsOpend = false;
 void ReadFromFile(FILE **FileInput, int FileLocasionInargv, char *argv[], char *Buffer);
 void ExitFile(FILE *FileInput, FILE *FileOtput);
