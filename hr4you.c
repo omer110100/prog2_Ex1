@@ -5,6 +5,7 @@
 #include "prog2_ex1.h"
 
 //bla2 
+//asd
 bool InputFileIsOpend = false, OutputFileIsOpend = false;
 void ReadFromFile(FILE **FileInput, int FileLocasionInargv, char *argv[], char *Buffer);
 void ExitFile(FILE *FileInput, FILE *FileOtput);
