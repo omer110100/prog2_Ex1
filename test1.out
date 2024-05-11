@@ -1,0 +1,78 @@
+[[BARTENDER   ]]: 111111111 <David>, earns 86.30 NIS per hour [Total 2761.60 NIS this week]
+[[WAITER      ]]: 121212121 <George>, earns 35.00 NIS per hour [Total 0.00 NIS this week]
+[[BARTENDER   ]]: 131313131 <Moses>, earns 30.00 NIS per hour [Total 0.00 NIS this week]
+[[CASHIER     ]]: 222222222 <John>, earns 26.10 NIS per hour [Total 417.60 NIS this week]
+[[MANAGER     ]]: 444444444 <Jane>, earns 40.00 NIS per hour [Total 2240.00 NIS this week]
+[[DISHWASHER  ]]: 555555555 <Peter>, earns 20.00 NIS per hour [Total 1120.00 NIS this week]
+[[CHEF        ]]: 666666666 <Paul>, earns 25.00 NIS per hour [Total 1000.00 NIS this week]
+[[WAITER      ]]: 777777777 <George>, earns 35.00 NIS per hour [Total 0.00 NIS this week]
+[[WAITER      ]]: 888888888 <Ringo>, earns 30.00 NIS per hour [Total 0.00 NIS this week]
+[[CHEF        ]]: 999999999 <Paul>, earns 25.00 NIS per hour [Total 0.00 NIS this week]
+[[BARTENDER   ]]: 333333333 <Yossi>, earns 35.60 NIS per hour [Total 854.40 NIS this week]
+	Shift: SUNDAY, NIGHT
+	Shift: TUESDAY, MORNING
+	Shift: WEDNESDAY, MORNING
+[[WAITER      ]]: 111222333 <Leah>, earns 30.00 NIS per hour [Total 1200.00 NIS this week]
+[[WAITER      ]]: 121212121 <George>, earns 35.00 NIS per hour [Total 0.00 NIS this week]
+[[WAITER      ]]: 123456789 <Rebecca>, earns 30.00 NIS per hour [Total 1440.00 NIS this week]
+[[BARTENDER   ]]: 131313131 <Moses>, earns 30.00 NIS per hour [Total 0.00 NIS this week]
+[[CASHIER     ]]: 222222222 <John>, earns 26.10 NIS per hour [Total 417.60 NIS this week]
+[[BARTENDER   ]]: 333333333 <Yossi>, earns 35.60 NIS per hour [Total 854.40 NIS this week]
+[[MANAGER     ]]: 444444444 <Jane>, earns 40.00 NIS per hour [Total 2240.00 NIS this week]
+[[WAITER      ]]: 444555666 <Sarah>, earns 30.00 NIS per hour [Total 480.00 NIS this week]
+[[DISHWASHER  ]]: 555555555 <Peter>, earns 20.00 NIS per hour [Total 1120.00 NIS this week]
+[[CHEF        ]]: 666666666 <Paul>, earns 25.00 NIS per hour [Total 1000.00 NIS this week]
+[[WAITER      ]]: 777777777 <George>, earns 35.00 NIS per hour [Total 0.00 NIS this week]
+[[WAITER      ]]: 888888888 <Ringo>, earns 30.00 NIS per hour [Total 0.00 NIS this week]
+[[WAITER      ]]: 987654321 <Rachel>, earns 30.00 NIS per hour [Total 720.00 NIS this week]
+[[CHEF        ]]: 999999999 <Paul>, earns 25.00 NIS per hour [Total 0.00 NIS this week]
+[[BARTENDER   ]]: 131313131 <Moses>, earns 30.00 NIS per hour [Total 0.00 NIS this week]
+[[BARTENDER   ]]: 333333333 <Yossi>, earns 35.60 NIS per hour [Total 854.40 NIS this week]
+[[WAITER      ]]: 123456789 <Rebecca>, earns 30.00 NIS per hour [Total 1440.00 NIS this week]
+	Shift: SUNDAY, MORNING
+	Shift: MONDAY, MORNING
+	Shift: TUESDAY, MORNING
+	Shift: WEDNESDAY, MORNING
+	Shift: THURSDAY, MORNING
+	Shift: FRIDAY, MORNING
+[[WAITER      ]]: 987654321 <Rachel>, earns 30.00 NIS per hour [Total 720.00 NIS this week]
+	Shift: SUNDAY, MORNING
+	Shift: MONDAY, MORNING
+	Shift: TUESDAY, MORNING
+[[WAITER      ]]: 111222333 <Leah>, earns 30.00 NIS per hour [Total 1200.00 NIS this week]
+	Shift: SUNDAY, MORNING
+	Shift: MONDAY, MORNING
+	Shift: TUESDAY, MORNING
+	Shift: WEDNESDAY, MORNING
+	Shift: THURSDAY, MORNING
+[[WAITER      ]]: 444555666 <Sarah>, earns 30.00 NIS per hour [Total 480.00 NIS this week]
+	Shift: SUNDAY, MORNING
+	Shift: MONDAY, MORNING
+[[BARTENDER   ]]: 333333333 <Yossi>, earns 35.60 NIS per hour [Total 854.40 NIS this week]
+	Shift: SUNDAY, NIGHT
+	Shift: TUESDAY, MORNING
+	Shift: WEDNESDAY, MORNING
+[[DISHWASHER  ]]: 555555555 <Peter>, earns 20.00 NIS per hour [Total 1120.00 NIS this week]
+	Shift: SUNDAY, AFTERNOON
+	Shift: MONDAY, MORNING
+	Shift: TUESDAY, EVENING
+	Shift: WEDNESDAY, EVENING
+	Shift: THURSDAY, EVENING
+	Shift: FRIDAY, AFTERNOON
+	Shift: SATURDAY, NIGHT
+[[MANAGER     ]]: 444444444 <Jane>, earns 40.00 NIS per hour [Total 2240.00 NIS this week]
+	Shift: SUNDAY, MORNING
+	Shift: MONDAY, MORNING
+	Shift: TUESDAY, MORNING
+	Shift: WEDNESDAY, MORNING
+	Shift: THURSDAY, MORNING
+	Shift: FRIDAY, MORNING
+	Shift: SATURDAY, MORNING
+[[TUESDAY      MORNING     ]]: 5 workers [Total 1324.80 NIS]
+[[TUESDAY      AFTERNOON   ]]: 1 workers [Total 200.00 NIS]
+[[TUESDAY      EVENING     ]]: 1 workers [Total 160.00 NIS]
+[[TUESDAY      NIGHT       ]]: 1 workers [Total 208.80 NIS]
+[[SUNDAY       NIGHT       ]]: 1 workers [Total 284.80 NIS]
+[[MONDAY       AFTERNOON   ]]: 1 workers [Total 200.00 NIS]
+[[WEDNESDAY    EVENING     ]]: 1 workers [Total 160.00 NIS]
+[[THURSDAY     MORNING     ]]: 3 workers [Total 800.00 NIS]

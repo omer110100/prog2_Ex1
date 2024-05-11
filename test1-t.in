@@ -1,0 +1,116 @@
+
+# This is a simple example of using hr4you program API (no errors expected)
+
+# Adding workers
+
+# Add Worker <name> <worker id>   <hourly wage> <role>      <shifts per week>
+  Add Worker David  111111111     86.30         Bartender   4
+Add Worker John 222222222 26.10 Cashier 2
+        Add Worker Mary 333333333 30.00 Waiter 6
+      Add Worker Jane 444444444 40.00 Manager 7
+Add Worker Peter 555555555 20.00 Dishwasher 7
+  Add Worker Paul 666666666 25.00 Chef 5
+Add Worker George 777777777 35.00 Waiter 5
+Add Worker Ringo 888888888 30.00 Waiter 6
+Add Worker Paul 999999999 25.00 Chef 4
+Add Worker George 121212121 35.00 Waiter 2
+Add Worker Moses 131313131 30.00 Bartender 6
+
+# Adding shifts
+# Add Shift <worker id> <day> <shift>
+Add Shift 444444444 2 Morning
+Add Shift 444444444 3 Morning
+Add Shift 444444444 4 Morning
+Add Shift 444444444 5 Morning
+Add Shift 444444444 6 Morning
+Add Shift 444444444 7 Morning
+Add Shift 444444444 1 Morning
+
+Add Shift 111111111 1 Afternoon
+Add Shift 111111111 2 Afternoon
+  Add   Shift  111111111      3  Morning
+Add Shift 111111111 4 Evening
+
+Add Shift 555555555 5 Evening
+Add Shift 555555555 7 Night
+Add Shift 555555555 6 Afternoon
+Add Shift 555555555 2 Morning
+Add Shift 555555555 3 Evening
+Add Shift 555555555 4 Evening
+Add Shift 555555555 1 Afternoon
+
+Add Shift 333333333 7 Night
+Add Shift 333333333 3 Night
+Add Shift 333333333 1 Night
+Add Shift 333333333 5 Night
+
+Add Shift 666666666 2 Afternoon
+Add Shift 666666666 3 Afternoon
+Add Shift 666666666 4 Afternoon
+Add Shift 666666666 5 Afternoon
+Add Shift 666666666 6 Afternoon
+
+Add Shift 222222222 2 Evening
+Add Shift 222222222 3 Night
+
+Remove Worker 333333333
+
+Report Workers
+
+Add Worker Yossi 333333333 35.60 Bartender 4
+Add Shift 333333333 4 Morning
+Add Shift 333333333 3 Morning
+Add Shift 333333333 1 Night
+
+Remove Worker 111111111
+
+Report Shifts 333333333
+
+# Add new workers
+Add Worker Rebecca 123456789 30.00 Waiter 6
+Add Worker Rachel 987654321 30.00 Waiter 6
+Add Worker Leah 111222333 30.00 Waiter 6
+Add Worker Sarah 444555666 30.00 Waiter 6
+
+# Add shifts
+Add Shift 123456789 1 Morning
+Add Shift 123456789 2 Morning
+Add Shift 123456789 3 Morning
+Add Shift 123456789 4 Morning
+Add Shift 123456789 5 Morning
+Add Shift 123456789 6 Morning
+
+Add Shift 987654321 1 Morning
+Add Shift 987654321 2 Morning
+Add Shift 987654321 3 Morning
+
+Add Shift 111222333 1 Morning
+Add Shift 111222333 2 Morning
+Add Shift 111222333 3 Morning
+Add Shift 111222333 4 Morning
+Add Shift 111222333 5 Morning
+
+Add Shift 444555666 1 Morning
+Add Shift 444555666 2 Morning
+
+
+# Reports
+Report Workers
+Report Workers Bartender
+
+Report Shifts 123456789
+Report Shifts 987654321
+Report Shifts 111222333
+Report Shifts 444555666
+Report Shifts 333333333
+Report Shifts 555555555
+Report Shifts 444444444
+
+Report Shift Details 3 Morning
+Report Shift Details 3 Afternoon
+Report Shift Details 3 Evening
+Report Shift Details 3 Night
+Report Shift Details 1 Night
+Report Shift Details 2 Afternoon
+Report Shift Details 4 Evening
+Report Shift Details 5 Morning

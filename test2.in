@@ -1,0 +1,118 @@
+
+# This is a simple example of using hr4you program API - (with errors)
+
+Report Workers
+
+# Add Workers
+Add Worker John 1111 21.20 Manager 7
+Add Worker Jane 2222 18.50 Cashier 5
+Add Worker Jack 3333 15.00 Waiter 6
+Add Worker Jack 3131 15.00 Waiter 6
+Add Worker Jack 3232 15.00 Waiter 6
+Add Worker Jack 3434 15.00 Waiter 6
+Add Worker Jack 3535 15.00 Waiter 6
+Add Worker Jack 3636 15.00 Waiter 6
+Add Worker Jack 3737 15.00 Waiter 6
+Add Worker Jill 4444 12.00 Dishwasher 2
+Add Worker Joe 5555 103.30 Bartender 4
+Add Worker Jim 6666 81.00 Chef 6
+Add Worker Jeff 7777 66.20 Chef 3
+Add Worker Jerry 7777 49.00 Busboy 1
+Add Worker Johnson 8888 121.30 Bartender 2
+Add Worker Moses 9999 20.00 Manager 5
+Add Worker Mary 1010 18.70 Cashier 4
+Add Worker Mark 1111 15.00 Waiter 6
+Add Worker Sarah 1212 12.30 Dishwasher 2
+Add Worker Eva 2121 103.30 Bartender 4
+Add Worker Sam 1313 66.20 Waiter 3
+Add Worker Sam 3232 103.30 Bartender 4
+Add Worker Steve 1414 81.00 Chef 6
+Add Worker Scott 1515 66.20 Waiter 3
+Add Worker Scott 3434 103.30 Bartender 4
+Add Worker David 1616 81.00 Waiter 6
+
+
+Report Workers
+
+Add Shift 7777 3 Afternoon
+Add Shift 7777 4 Evening
+Add Shift 7777 5 Afternoon
+Add Shift 7777 6 Morning
+Add Shift 7777 3 Evening
+
+Add Shift 6666 3 Afternoon
+Add Shift 6666 4 Night
+Add Shift 6666 5 Afternoon
+Add Shift 6666 6 Afternoon
+Add Shift 6666 3 Night
+
+Add Shift 5555 3 Afternoon
+Add Shift 5555 4 Night
+Add Shift 5555 5 Night
+Add Shift 5555 6 Night
+
+Add Shift 4444 3 Afternoon
+Add Shift 4444 4 Morning
+
+Add Shift 3737 3 Morning
+Add Shift 3636 3 Afternoon
+Add Shift 3535 3 Morning
+Add Shift 3434 3 Night
+Add Shift 3333 3 Afternoon
+Add Shift 3232 3 Afternoon
+
+Add Shift 3131 3 Afternoon
+Add Shift 3131 4 Night
+Add Shift 3131 5 Morning
+Add Shift 3131 6 Morning
+
+Add Shift 2222 3 Morning
+Add Shift 2222 4 Night
+Add Shift 2222 5 Afternoon
+Add Shift 2222 6 Night
+
+Add Shift 1111 3 Night
+Add Shift 1111 4 Night
+Add Shift 1111 5 Afternoon
+Add Shift 1111 6 Morning
+Add Shift 3333 4 Morning
+Add Shift 3333 5 Night
+Add Shift 8888 3 Evening
+Add Shift 9999 3 Afternoon
+Add Shift 1010 3 Morning
+Add Shift 1212 3 Evening
+Add Shift 1313 3 Afternoon
+Add Shift 1414 3 Morning
+Add Shift 1515 3 Night
+Add Shift 1515 4 Night
+Add Shift 1515 5 Night
+Add Shift 1515 6 Night
+Add Shift 1616 3 Morning
+Add Shift 1717 3 Morning
+
+Report Shifts 1515
+Report Shift Details 6 Night
+
+Report Workers
+Report Workers Bartender
+Report Workers Chef
+Report Workers Waiter
+
+Report Shifts 1616
+Report Shifts 1717
+Report Shifts 2121
+Report Shifts 2929
+
+Report Shift Details 3 Morning
+Report Shift Details 3 Afternoon
+Report Shift Details 3 Evening
+Report Shift Details 3 Night
+Report Shift Details 4 Morning
+Report Shift Details 4 Afternoon
+Report Shift Details 4 Evening
+Report Shift Details 4 Night
+Report Shift Details 5 Morning
+Report Shift Details 5 Afternoon
+Report Shift Details 5 Evening
+Report Shift Details 5 Night
+Report Shift Details 6 Morning
