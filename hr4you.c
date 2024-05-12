@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "prog2_ex1.h"
 
-//bla2 bka hello
+//bla2 bka hello hi this is eden 
 //bla2 
 //asdd
 bool InputFileIsOpend = false, OutputFileIsOpend = false;
