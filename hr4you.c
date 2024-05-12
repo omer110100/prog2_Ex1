@@ -3,10 +3,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include "prog2_ex1.h"
+#define MaxName 20
+#define MaxDays 7
 
-//bla2 bka hello hi this is eden 
-//bla2 
-//asdd
+
 bool InputFileIsOpend = false, OutputFileIsOpend = false;
 void ReadFromFile(FILE **FileInput,  FILE **FileOutput, int FileLocasionInargv, char *argv[], char *Buffer);
 void ExitFile(FILE *FileInput, FILE *FileOutput);
@@ -14,21 +14,21 @@ void MyOpenOutputFile(char *FileName, char Mode, FILE **FileOutput);
 void MyOpenInputFile(char *FileName, char Mode, FILE **FileInput);
 int ValidInputFile(int argc, char *argv[], FILE **FileInput, FILE **FileOutput);
 void DetectCommands(char *Buffer,  FILE **FileOutput);
-// void AddWorker(char *Buffer);
+void AddWorker(char *Buffer);
 // void AddShift(char *Buffer);
 //void ReportShifts(char *Buffer,  FILE **FileOutput);
 void ReportShiftDetails(char *Buffer,  FILE **FileOutput);
 // void ReportWorkers(char *Buffer,  FILE **FileOutput);
 // void RemoveWorker(char *Buffer);
 
-typedef struct Worker
+typedef struct 
 {
-        char name[50];
+        char name[MaxName];
         int id;
         float hourly_wage;
         worker_role role;
         int number_of_shifts; // 1 <= num <= 7
-        shift_type shift_type[7];
+        shift_type shift_type[MaxDays];
 } Worker;
 
 // typedef struct Shift
@@ -158,7 +158,7 @@ void DetectCommands(char *Buffer, FILE **FileOutput)
                         word = strtok(NULL, " ");
                         if (strcmp(word, "Worker") == 0)
                         {
-                                //AddWorker(Buffer);
+                                AddWorker(Buffer);
                         }
                         else if (strcmp(word, "Shift") == 0)
                         {
@@ -265,3 +265,59 @@ void ReportShiftDetails(char *Buffer, FILE **FileOutput)
         }
 }
 
+void AddWorker(char *Buffer)
+{
+        printf("Add Worker\n");
+        int i=0;
+        char *wordd = strtok(Buffer, " ");
+        while(wordd!=NULL)
+        {
+                 printf("Add Worker\n");
+                 wordd = strtok(NULL, " ");
+        }
+                printf("%d\n",i);
+                switch (i)
+                {
+                case 2:
+                printf("%d\n",i);
+                        break;
+                case 3:
+                printf("%d\n",i);
+                        break;
+                case 4:
+                printf("%d\n",i);
+
+                        break;
+                case 5:
+                printf("%d\n",i);
+
+                        break;
+                case 6:
+                printf("%d\n",i);
+                        break;
+                
+                default:
+                        break;
+                }
+                i++;
+       // word = strtok(NULL, " ");
+        
+
+}
+void RemoveWorker()
+{
+        printf("RemoveWorker\n");
+
+}
+void AddShift()
+{
+        printf("AddShift\n");
+}
+void ReportWorkers()
+{
+        printf("ReportWorkers\n");
+}
+void ReportShifts()
+{
+        printf("ReportShifts\n");
+}
