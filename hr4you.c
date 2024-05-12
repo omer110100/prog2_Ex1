@@ -6,7 +6,7 @@
 
 //bla2 bka
 //bla2 
-//asd
+//asdd
 bool InputFileIsOpend = false, OutputFileIsOpend = false;
 void ReadFromFile(FILE **FileInput,  FILE **FileOutput, int FileLocasionInargv, char *argv[], char *Buffer);
 void ExitFile(FILE *FileInput, FILE *FileOutput);
