@@ -88,6 +88,8 @@ int ValidInputFile(int argc, char *argv[], FILE **FileInput, FILE **FileOutput)
         return FileLocasionInargv;
 }
 
+
+
 void MyOpenInputFile(char *FileName, char Mode, FILE **FileInput)
 {
         *FileInput = fopen(FileName, &Mode);
