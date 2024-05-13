@@ -54,6 +54,9 @@ int main(int argc, char *argv[])
         FileLocasionInargv = ValidInputFile(argc, argv, &FileInput, &FileOutput);
         ExitFile(FileInput, FileOutput);
         ReadFromFile(&FileInput, &FileOutput, FileLocasionInargv, argv, Buffer);
+
+        //prog2_report_worker(stdout, 1234, "david", 234.76, 1, 234.76);
+        return 0;
 }
 int ValidInputFile(int argc, char *argv[], FILE **FileInput, FILE **FileOutput)
 {
@@ -118,7 +121,7 @@ void ExitFile(FILE *FileInput, FILE *FileOutput)
         if (FileInput == stdin)
         {
                 exit(1);
-                printf("Exit Program\n");
+                //printf("Exit Program\n");
         }
         else
         {
@@ -179,7 +182,8 @@ void DetectCommands(char *Buffer, FILE **FileOutput)
                 else if (strcmp(word, "Report") == 0)
                 {
                         // report command
-                        word = strtok(NULL, " ");
+                        
+                        word = strtok(NULL, " \t\n\r");
                         if (strcmp(word, "Shift") == 0)
                         {
                                 //printf("\n%s\n", Buffer);
@@ -261,7 +265,7 @@ void ReportShiftDetails(char *Buffer, FILE **FileOutput)
                                 }
                                 
                                 // void prog2_report_shift_details(FILE *out, shift_day day, shift_type type, int num_of_workers, float total_payment);
-                                prog2_report_shift_details(*FileOutput, day, type, num_of_workers, total_payment);
+                                prog2_report_shift_details(stdout, day, type, num_of_workers, total_payment);
                         }
 
 
@@ -275,7 +279,7 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
         char *word = strtok(Buffer, " ");        
         while (word != NULL)
         {
-                // printf("\n%s\n", word);
+                // printf("\n%c\n", FileOutput);
                 if (strcmp(word, "Shifts") == 0)
                 {
                         
@@ -295,14 +299,14 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
                                                 //עובד רלוונטי לבדיקה
                                                 employeeExist = 1;
                                                 total_payment = workers[i].number_of_shifts * HOURS_PER_SHIFT * workers[i].hourly_wage;
-                                                prog2_report_worker(*FileOutput, workers[i].id, workers[i].name, workers[i].hourly_wage, workers[i].role, total_payment);
+                                                prog2_report_worker(stdout, workers[i].id, workers[i].name, workers[i].hourly_wage, workers[i].role, total_payment);
                                                 if(workers[i].number_of_shifts)
                                                 {
                                                         for (size_t j = 0; j < workers[i].number_of_shifts; i++)
                                                         {
                                                                 type = workers[i].shift_type[j];
                                                                 day = j + 1;
-                                                                prog2_report_shift(*FileOutput, type, day);
+                                                                prog2_report_shift(stdout, day, type);
                                                         }
                                                         
                                                 }
@@ -311,6 +315,7 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
                                                 }
                                         }
                                 }
+
                                 if(!employeeExist)
                                 {
                                         prog2_report_error_message(WORKER_DOESNT_EXIST);
@@ -329,40 +334,51 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
 
 void ReportWorkers(char *Buffer, FILE **FileOutput)
 {
-        char *word = strtok(Buffer, " ");     
+        
+        char *word = strtok(Buffer, " \n\t\r");   
+        
         float total_payment = 0;   
         worker_role role_t;
         while (word != NULL)
         {
+                //printf("%d - %s\n", strcmp(word, "Workers") == 0, word);
+                
                 if (strcmp(word, "Workers") == 0)
                 {
+                        
                         word = strtok(NULL, " \n\t\r");
+                        // printf("80%d333\n",word == NULL);
                         SortWorkers(workers);
                         if(word)
                         {
                                 role_t = WorkerRoleConvertor(word);
-                                // print specific role
-                                for (size_t i = 0; i < MAX_WORKERS; i++)
-                                {
-                                        if(workers[i].role == role_t)
-                                        {
-                                        total_payment = workers[i].number_of_shifts * HOURS_PER_SHIFT * workers[i].hourly_wage;
-                                        prog2_report_worker(*FileOutput, workers[i].id, workers[i].name, workers[i].hourly_wage, workers[i].role, total_payment);
-                                        }
-                                }
                         }
-                        else{                                
-                                // print all workers
-                                for (size_t i = 0; i < MAX_WORKERS; i++)
+
+                        for (size_t i = 0; i < MAX_WORKERS; i++)
+                        {
+                                if(workers[i].id)
                                 {
-                                        total_payment = workers[i].number_of_shifts * HOURS_PER_SHIFT * workers[i].hourly_wage;
-                                        prog2_report_worker(*FileOutput, workers[i].id, workers[i].name, workers[i].hourly_wage, workers[i].role, total_payment);
+                                        if (word)
+                                        {
+                                                if (workers[i].role == role_t)
+                                                {
+                                                        total_payment = workers[i].number_of_shifts * HOURS_PER_SHIFT * workers[i].hourly_wage;
+                                                        prog2_report_worker(stdout, workers[i].id, workers[i].name, workers[i].hourly_wage, workers[i].role, total_payment);
+                                                }                                                
+                                        }
+                                        else
+                                        {
+                                                total_payment = workers[i].number_of_shifts * HOURS_PER_SHIFT * workers[i].hourly_wage;
+                                                prog2_report_worker(stdout, workers[i].id, workers[i].name, workers[i].hourly_wage, workers[i].role, total_payment);
+                                        }
+                                        
+
                                 }
                         }
 
 
                 }
-                word = strtok(NULL, " ");
+                word = strtok(NULL, " \n\t\r");
         }
 }
 
@@ -385,7 +401,7 @@ void SortWorkers(Worker workers[])
 }
 void AddWorker(char *Buffer)
 {
-        printf("Add Worker\n");
+        //printf("Add Worker\n");
         int WorkerPlace;
         bool Worker__OVERFLOW=true;
         for(WorkerPlace=0;WorkerPlace<MAX_WORKERS;WorkerPlace++)
@@ -481,7 +497,7 @@ void AddWorker(char *Buffer)
 }
 void RemoveWorker(char *Buffer)
 {       
-        printf("RemoveWorker\n");  
+        //printf("RemoveWorker\n");  
         char *word = strtok(Buffer, " \n\r");
         int i=0;
         while (word != NULL)
@@ -517,7 +533,7 @@ void RemoveWorker(char *Buffer)
                 word = strtok(NULL, " ");
 
         }
-        printf("Buffer : %s\n",Buffer);  
+        //printf("Buffer : %s\n",Buffer);  
 
 }
 void AddShift(char *Buffer)

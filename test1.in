@@ -4,6 +4,7 @@
 
 # Add Worker <name> <worker id>   <hourly wage> <role>      <shifts per week>
   Add Worker David  111111111     86.30         Bartender   4
+  Add Worker aaasd  123455785     11.30         Bartender   2
 
 
 
@@ -11,21 +12,17 @@
 Report Workers
 Report Workers Bartender
 
-Report Shifts 123456789
-Report Shifts 987654321
-Report Shifts 111222333
-Report Shifts 444555666
-Report Shifts 333333333
-Report Shifts 555555555
-Report Shifts 444444444
+Report Shifts 111111111
+Report Shifts 123455785
 
-Report Shift Details 3 Morning
-Report Shift Details 3 Afternoon
-Report Shift Details 3 Evening
-Report Shift Details 5 Night
-Report Shift Details 1 Night
-Report Shift Details 2 Afternoon
-Report Shift Details 4 Evening
-Report Shift Details 5 Morning
+
+#Report Shift Details 3 Morning
+#Report Shift Details 3 Afternoon
+#Report Shift Details 3 Evening
+#Report Shift Details 5 Night
+#Report Shift Details 1 Night
+#Report Shift Details 2 Afternoon
+#Report Shift Details 5 Morning
+#Report Shift Details 4 Evening
 
 Remove Worker 111111111
