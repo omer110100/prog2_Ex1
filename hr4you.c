@@ -240,7 +240,7 @@ void ReportShiftDetails(char *Buffer, FILE **FileOutput)
                         if(passValid)
                         {
                                 int num_of_workers = 0;
-                                int total_payment = 0;
+                                float total_payment = 0;
                                 
                                 for (size_t i = 0; i < MAX_WORKERS; i++)
                                 {
@@ -285,7 +285,7 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
                         {
                                 int id = atoi(word);
                                 int employeeExist  = 0;
-                                int total_payment = 0;
+                                float total_payment = 0;
                                 shift_day day;
                                 shift_type type;
                                 for (size_t i = 0; i < MAX_WORKERS; i++)
@@ -329,7 +329,7 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
 void ReportWorkers(char *Buffer, FILE **FileOutput)
 {
         char *word = strtok(Buffer, " ");     
-        int total_payment = 0;   
+        float total_payment = 0;   
         worker_role role_t;
         while (word != NULL)
         {
