@@ -280,10 +280,10 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
                         
 
                         word = strtok(NULL, " \n\t\r");
-                        int idlen = strlen(word);
-                        if(idlen  > 0)
+                        int id = atoi(word);
+                        if(id  > 0)
                         {
-                                int id = atoi(word);
+                                
                                 int employeeExist  = 0;
                                 float total_payment = 0;
                                 shift_day day;
