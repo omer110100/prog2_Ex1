@@ -9,24 +9,6 @@
 #define MaxRole 6
 #define Max_Week_Shift 7 
 
-
-
-bool InputFileIsOpend = false, OutputFileIsOpend = false;
-void ReadFromFile(FILE **FileInput,  FILE **FileOutput, int FileLocasionInargv, char *argv[], char *Buffer);
-void ExitFile(FILE *FileInput, FILE *FileOutput);
-void MyOpenOutputFile(char *FileName, char Mode, FILE **FileOutput);
-void MyOpenInputFile(char *FileName, char Mode, FILE **FileInput);
-int ValidInputFile(int argc, char *argv[], FILE **FileInput, FILE **FileOutput);
-void DetectCommands(char *Buffer,  FILE **FileOutput,char *CopyBuffer);
-void AddWorker(char *Buffer);
-void Role_String_To_Enum(int  RoleNum,int WorkerPlace);
-
-// void AddShift(char *Buffer);
-//void ReportShifts(char *Buffer,  FILE **FileOutput);
-void ReportShiftDetails(char *Buffer,  FILE **FileOutput);
-// void ReportWorkers(char *Buffer,  FILE **FileOutput);
- void RemoveWorker(char *Buffer);
-
 typedef struct 
 {
         char name[MaxName];
@@ -36,7 +18,6 @@ typedef struct
         int number_of_shifts; // 1 <= num <= 7
         shift_type shift_type[MaxDays];
 } Worker;
-
 Worker workers[MAX_WORKERS];
 
 bool InputFileIsOpend = false, OutputFileIsOpend = false;
@@ -47,24 +28,19 @@ void MyOpenInputFile(char *FileName, char Mode, FILE **FileInput);
 int ValidInputFile(int argc, char *argv[], FILE **FileInput, FILE **FileOutput);
 void DetectCommands(char *Buffer,  FILE **FileOutput);
 void AddWorker(char *Buffer);
-// void AddShift(char *Buffer);
+void Role_String_To_Enum(int  RoleNum,int WorkerPlace);
 void ReportShifts(char *Buffer,  FILE **FileOutput);
-void ReportShiftDetails(char *Buffer,  FILE **FileOutput);
 void ReportWorkers(char *Buffer,  FILE **FileOutput);
-// void RemoveWorker(char *Buffer);
 void SortWorkers(Worker workers[]);
+void AddShift(char *Buffer);
+void ReportShiftDetails(char *Buffer,  FILE **FileOutput);
+void RemoveWorker(char *Buffer);
+
+
+
+
 shift_type ShiftTypeConvertor(char *word);
 worker_role WorkerRoleConvertor(char *word);
-
-
-
-// typedef struct Shift
-// {
-//         shift_type shift_type; 
-//         shift_day shift_day; 
-// } Shift;
-
-Worker workers[MAX_WORKERS];
 char* workerRole[MaxRole]={"Bartender","Waiter","Manager","Cashier","Chef","Dishwasher"};
 
 
@@ -161,8 +137,7 @@ void ExitFile(FILE *FileInput, FILE *FileOutput)
 
 void ReadFromFile(FILE **FileInput, FILE **FileOutput, int FileLocasionInargv, char *argv[], char *Buffer)
 {
-        MyOpenInputFile(argv[FileLocasionInargv], 'r', FileInput);
-        char CopyBuffer[MAX_LEN]; 
+        MyOpenInputFile(argv[FileLocasionInargv], 'r', FileInput); 
         while (fgets(Buffer, MAX_LEN, *FileInput) != NULL)
         {
                 
@@ -471,6 +446,8 @@ void AddWorker(char *Buffer)
                 case 5:
                        // printf("%d\n",i);
                         bool ErroRole=true;
+                        // shift_type type = WorkerRoleConvertor(word);
+                        // workers[WorkerPlace].role = type;
                         for(RoleNum=0;RoleNum<MaxRole;RoleNum++)
                          {
                                 if(strcmp(word, workerRole[RoleNum]) == 0)
@@ -543,7 +520,7 @@ void RemoveWorker(char *Buffer)
         printf("Buffer : %s\n",Buffer);  
 
 }
-void AddShift()
+void AddShift(char *Buffer)
 {
         printf("AddShift\n");
 }
