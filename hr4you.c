@@ -25,7 +25,7 @@ void Role_String_To_Enum(int  RoleNum,int WorkerPlace);
 //void ReportShifts(char *Buffer,  FILE **FileOutput);
 void ReportShiftDetails(char *Buffer,  FILE **FileOutput);
 // void ReportWorkers(char *Buffer,  FILE **FileOutput);
-// void RemoveWorker(char *Buffer);
+ void RemoveWorker(char *Buffer);
 
 typedef struct 
 {
@@ -194,7 +194,7 @@ void DetectCommands(char *Buffer, FILE **FileOutput,char *CopyBuffer)
                 else if (strcmp(word, "Remove") == 0)
                 {
                         // renive command
-                        //RemoveWorker(Buffer);
+                        RemoveWorker(CopyBuffer);
                 }
 
                 word = strtok(NULL, " ");
@@ -203,8 +203,7 @@ void DetectCommands(char *Buffer, FILE **FileOutput,char *CopyBuffer)
 void ReportShiftDetails(char *Buffer, FILE **FileOutput)
 {
         char *word = strtok(Buffer, " \n\r");
-        shift_type type;
-        
+        shift_type type;      
         while (word != NULL)
         {
                 
@@ -368,9 +367,45 @@ void AddWorker(char *Buffer)
         word = strtok(NULL, " ");  
         }
 }
-void RemoveWorker()
-{
-        printf("RemoveWorker\n");
+void RemoveWorker(char *Buffer)
+{       
+        printf("RemoveWorker\n");  
+        char *word = strtok(Buffer, " \n\r");
+        int i=0;
+        while (word != NULL)
+        {
+                if(i==2)
+                {
+                        int CurrentId=atoi(word);
+                        int WorkerPlace;
+                        bool Worker__Exist=true;
+                        for(WorkerPlace=0;WorkerPlace<MAX_WORKERS;WorkerPlace++)
+                        {
+                         if(CurrentId<=0)
+                         {
+                                prog2_report_error_message(INVALID_WORKER_ID);
+                         }
+                         if(workers[WorkerPlace].id==CurrentId)
+                                {
+                                Worker__Exist=false;
+                                workers[WorkerPlace].id=0;
+                                workers[WorkerPlace].number_of_shifts=0;
+                                 // printf("%d",WorkerPlace);    
+                                break;
+                                }
+                        }
+                         if(Worker__Exist==true)
+                        {
+                                prog2_report_error_message(WORKER_DOESNT_EXIST);
+                                return;
+                        }
+
+                }
+                i++;
+                word = strtok(NULL, " ");
+
+        }
+        printf("Buffer : %s\n",Buffer);  
 
 }
 void AddShift()
