@@ -281,7 +281,7 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
 
                         word = strtok(NULL, " \n\t\r");
                         int idlen = strlen(word);
-                        if(idlen == 9)
+                        if(idlen  > 0)
                         {
                                 int id = atoi(word);
                                 int employeeExist  = 0;
