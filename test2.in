@@ -31,7 +31,9 @@ Add Worker Scott 1515 66.20 Waiter 3
 Add Worker Scott 3434 103.30 Bartender 4
 Add Worker David 1616 81.00 Waiter 6
 
+
 Report Workers
+
 Add Shift 7777 3 Afternoon
 Add Shift 7777 4 Evening
 Add Shift 7777 5 Afternoon

@@ -45,6 +45,7 @@ void ReportWorkers(char *Buffer,  FILE **FileOutput);
 void ReportShiftDetails(char *Buffer,  FILE **FileOutput);
 
 void SortWorkers(Worker workers[]);
+float TotalPayment(int workerID);
 
 int main(int argc, char *argv[])
 {
@@ -137,13 +138,13 @@ void DetectCommands(char *Buffer, FILE **FileOutput)
 {
         char row[MAX_LEN];
         strcpy(row, Buffer);
-        char *word = strtok(row, " ");   
+        char *word = strtok(row, " \t\r\n");   
 
         while (word != NULL)
         {
                 if (strcmp(word, "Add") == 0)
                 {
-                        word = strtok(NULL, " ");
+                        word = strtok(NULL, " \t\r\n");
 
                         if (strcmp(word, "Worker") == 0)
                                 AddWorker(Buffer);
@@ -164,7 +165,7 @@ void DetectCommands(char *Buffer, FILE **FileOutput)
                 else if (strcmp(word, "Remove") == 0)
                         RemoveWorker(Buffer);
 
-                word = strtok(NULL, " ");
+                word = strtok(NULL, " \t\r\n");
         }
 }
 
@@ -189,7 +190,7 @@ void AddWorker(char *Buffer)
         }
 
         int i=0;
-        char *word = strtok(Buffer, " ");
+        char *word = strtok(Buffer, " \t\r\n");
         float Current_Hourly_wage;
         int Worker_Week_Shift;
         worker_role role_t;
@@ -269,7 +270,7 @@ void AddWorker(char *Buffer)
 
                 i++;
 
-                word = strtok(NULL, " ");  
+                word = strtok(NULL, " \t\r\n");  
         }
 }
 
@@ -399,13 +400,13 @@ void RemoveWorker(char *Buffer)
                 }
 
                 i++;
-                word = strtok(NULL, " ");
+                word = strtok(NULL, " \t\r\n");
         }
 }
 
 void ReportShiftDetails(char *Buffer, FILE **FileOutput)
 {
-        char *word = strtok(Buffer, " ");
+        char *word = strtok(Buffer, " \t\r\n");
         shift_type type;
 
         while (word != NULL)
@@ -414,7 +415,7 @@ void ReportShiftDetails(char *Buffer, FILE **FileOutput)
                 {
                         int passValid = 1;
 
-                        word = strtok(NULL, " ");
+                        word = strtok(NULL, " \t\r\n");
                         int day = atoi(word);
                         
                         if( day < 1 || day > 7 )
@@ -426,7 +427,7 @@ void ReportShiftDetails(char *Buffer, FILE **FileOutput)
                                 shift_day day = day;
                         }
 
-                        word = strtok(NULL, " \t\r");
+                        word = strtok(NULL, " \t\r\n");
 
                         if(ShiftTypeConvertor(word) == -1){
                                 prog2_report_error_message(INVALID_SHIFT_TYPE);
@@ -446,7 +447,7 @@ void ReportShiftDetails(char *Buffer, FILE **FileOutput)
                                                 if(workers[i].shift_type[day - 1] == type)
                                                 {
                                                         num_of_workers++;
-                                                        total_payment += workers[i].hourly_wage * HOURS_PER_SHIFT;
+                                                        total_payment += HOURS_PER_SHIFT * workers[i].hourly_wage;
                                                 }    
                                         }
                                 }
@@ -454,17 +455,18 @@ void ReportShiftDetails(char *Buffer, FILE **FileOutput)
                                 if(!num_of_workers)
                                         prog2_report_error_message(NO_WORKERS);
                                 
+                                
                                 prog2_report_shift_details(stdout, day, type, num_of_workers, total_payment);
                         }
                 }
 
-                word = strtok(NULL, " ");
+                word = strtok(NULL, " \t\r\n");
         }
 }
 
 void ReportShifts(char *Buffer, FILE **FileOutput)
 {
-        char *word = strtok(Buffer, " "); 
+        char *word = strtok(Buffer, " \t\r\n"); 
 
         while (word != NULL)
         {
@@ -484,8 +486,7 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
                                 {
                                         if(workers[i].id == id){
                                                 employeeExist = 1;
-                                                total_payment = workers[i].number_of_shifts * HOURS_PER_SHIFT * workers[i].hourly_wage;
-
+                                                total_payment = TotalPayment(workers[i].id);
                                                 prog2_report_worker(stdout, workers[i].id, workers[i].name, workers[i].hourly_wage, workers[i].role, total_payment);
 
                                                 if(workers[i].number_of_shifts)
@@ -513,7 +514,7 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
                                 prog2_report_error_message(INVALID_WORKER_ID);
                 }
 
-                word = strtok(NULL, " ");
+                word = strtok(NULL, " \t\r\n");
         }
 }
 
@@ -550,13 +551,13 @@ void ReportWorkers(char *Buffer, FILE **FileOutput)
                                         {
                                                 if (workers[i].role == role_t)
                                                 {
-                                                        total_payment = workers[i].number_of_shifts * HOURS_PER_SHIFT * workers[i].hourly_wage;
+                                                        total_payment = TotalPayment(workers[i].id);
                                                         prog2_report_worker(stdout, workers[i].id, workers[i].name, workers[i].hourly_wage, workers[i].role, total_payment);
                                                 }                                                
                                         }
                                         else
                                         {
-                                                total_payment = workers[i].number_of_shifts * HOURS_PER_SHIFT * workers[i].hourly_wage;
+                                                total_payment = TotalPayment(workers[i].id);
                                                 prog2_report_worker(stdout, workers[i].id, workers[i].name, workers[i].hourly_wage, workers[i].role, total_payment);
                                         }
                                 }
@@ -617,4 +618,24 @@ worker_role WorkerRoleConvertor(char *word){
         if (strcmp(word, "Dishwasher") == 0)
                 return DISHWASHER;
         return -1;
+}
+
+float TotalPayment(int workerID)
+{
+        shift_type type;
+        float total_payment = 0;
+        for (size_t i = 0; i < MAX_WORKERS; i++)
+        {
+                if(workers[i].id == workerID){
+                        for (int j = 0; j < Max_Week_Shift; j++)
+                        {
+                                type = workers[i].shift_type[j];
+                                if(type)
+                                        total_payment += HOURS_PER_SHIFT * workers[i].hourly_wage;
+                                
+                        }
+                }
+        }
+
+        return total_payment;
 }
