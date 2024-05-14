@@ -337,6 +337,7 @@ void ReportWorkers(char *Buffer, FILE **FileOutput)
         
         float total_payment = 0;   
         worker_role role_t;
+        int workers_num = 0;
         while (word != NULL)
         {
                 //printf("%d - %s\n", strcmp(word, "Workers") == 0, word);
@@ -350,12 +351,17 @@ void ReportWorkers(char *Buffer, FILE **FileOutput)
                         if(word)
                         {
                                 role_t = WorkerRoleConvertor(word);
+                                if(role_t == -1)
+                                {
+                                        prog2_report_error_message(INVALID_ROLE);
+                                }
                         }
 
                         for (size_t i = 0; i < MAX_WORKERS; i++)
                         {
                                 if(workers[i].id)
                                 {
+                                        workers_num++;
                                         if (word)
                                         {
                                                 if (workers[i].role == role_t)
@@ -377,6 +383,10 @@ void ReportWorkers(char *Buffer, FILE **FileOutput)
 
                 }
                 word = strtok(NULL, " \n\t\r");
+        }
+
+        if(!workers_num){
+                prog2_report_error_message(NO_WORKERS);
         }
 }
 
