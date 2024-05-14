@@ -7,6 +7,18 @@
   Add Worker aaasd  123455785     11.30         Bartender   2
 
 
+# Adding shifts
+# Add Shift <worker id> <day> <shift>
+Add Shift 444444444 1 Morning
+
+Add Shift 111111111 1 Afternoon
+Add Shift 111111111 2 Afternoon
+  Add   Shift  111111111      3  Morning
+Add Shift 111111111 4 Evening
+
+
+
+
 
 # Reports
 Report Workers

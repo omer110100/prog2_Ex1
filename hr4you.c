@@ -18,7 +18,11 @@ typedef struct
         int number_of_shifts; // 1 <= num <= 7
         shift_type shift_type[MaxDays];
 } Worker;
+//char Shift_Arr[DAYS_IN_WEEK];
 Worker workers[MAX_WORKERS];
+char* workerRole[MaxRole]={"Bartender","Waiter","Manager","Cashier","Chef","Dishwasher"};
+shift_type ShiftTypeConvertor(char *word);
+worker_role WorkerRoleConvertor(char *word);
 
 bool InputFileIsOpend = false, OutputFileIsOpend = false;
 void ReadFromFile(FILE **FileInput,  FILE **FileOutput, int FileLocasionInargv, char *argv[], char *Buffer);
@@ -36,12 +40,6 @@ void AddShift(char *Buffer);
 void ReportShiftDetails(char *Buffer,  FILE **FileOutput);
 void RemoveWorker(char *Buffer);
 
-
-
-
-shift_type ShiftTypeConvertor(char *word);
-worker_role WorkerRoleConvertor(char *word);
-char* workerRole[MaxRole]={"Bartender","Waiter","Manager","Cashier","Chef","Dishwasher"};
 
 
 
@@ -176,7 +174,7 @@ void DetectCommands(char *Buffer, FILE **FileOutput)
                         }
                         else if (strcmp(word, "Shift") == 0)
                         {
-                                //AddShift(Buffer);
+                                AddShift(Buffer);
                         }
                 }
                 else if (strcmp(word, "Report") == 0)
@@ -187,15 +185,15 @@ void DetectCommands(char *Buffer, FILE **FileOutput)
                         if (strcmp(word, "Shift") == 0)
                         {
                                 //printf("\n%s\n", Buffer);
-                                ReportShiftDetails(Buffer, FileOutput);
+                                //ReportShiftDetails(Buffer, FileOutput);
                         }
                         else if (strcmp(word, "Workers") == 0)
                         {
-                                ReportWorkers(Buffer, FileOutput);
+                                //ReportWorkers(Buffer, FileOutput);
                         }
                         else if (strcmp(word, "Shifts") == 0)
                         {
-                                ReportShifts(Buffer, FileOutput);
+                                //ReportShifts(Buffer, FileOutput);
                         }
                 }
                 else if (strcmp(word, "Remove") == 0)
@@ -538,14 +536,91 @@ void RemoveWorker(char *Buffer)
 }
 void AddShift(char *Buffer)
 {
-        printf("AddShift\n");
+        printf("Add Shift\n");
+        //printf("%s\n",Buffer);
+        char *word = strtok(Buffer, " \n\t\r");   
+        int i=0;
+        //int WorkerPlace;
+        int Id_Place;
+        int Shift_Day;
+        int CounterShift=0;
+        while (word != NULL)
+        {
+                //printf("%s\n",word);
+                   switch (i)
+                {
+                case 2:
+                        bool ValidId=false;
+                        int CurrentId=atoi(word);
+                        //printf("%d\n",CurrentId);
+                        if(CurrentId<=0)
+                        {
+                                prog2_report_error_message(INVALID_WORKER_ID);
+                                return;    
+                        }
+                        for(Id_Place=0;Id_Place<MAX_WORKERS;Id_Place++)
+                        {
+                                if(CurrentId==workers[Id_Place].id)
+                                {
+                                        ValidId=true;
+                                        break;
+                                }
+                        }
+                        if(ValidId!=true)
+                        {
+                                prog2_report_error_message(WORKER_DOESNT_EXIST);
+                                return;                       
+                        }              
+                break;
+                
+                case 3:
+                        Shift_Day=atoi(word);
+                        if(!(Shift_Day > 0 && Shift_Day <= Max_Week_Shift))
+                        {
+                                prog2_report_error_message(INVALID_SHIFT_DAY);
+                                return;
+                        }
+                        break;
+                case 4:
+                        if(ShiftTypeConvertor(word)==-1)
+                        {
+                                prog2_report_error_message(INVALID_SHIFT_TYPE);
+                                return;
+                        }
+                        if (workers[Id_Place].shift_type[Shift_Day]!=0)
+                        {
+                                prog2_report_error_message(SHIFT_ALREADY_EXISTS);
+                                return;
+                        }
+                        for(int ShiftPlace=0; ShiftPlace<MaxDays;ShiftPlace++)
+                        {
+                                if(workers[ShiftPlace].shift_type[Shift_Day]!=0)
+                                {
+                                      CounterShift++; 
+                                }
+                        }
+                        if(CounterShift>=workers[Id_Place].number_of_shifts)
+                        {
+                                prog2_report_error_message(SHIFTS_OVERFLOW);
+                                return;
+                        }
+                        workers[Id_Place].shift_type[Shift_Day]=ShiftTypeConvertor(word);
+                        printf("%x\n",workers[Id_Place].shift_type[Shift_Day]);
+                        break;
+                }
+                
+                word = strtok(NULL, " \n\t\r");
+                i++;
+        }
+
+
 }
 
 
 shift_type ShiftTypeConvertor(char *word){
         if (strcmp(word, "Morning") == 0)
                 return MORNING;
-        if (strcmp(word, "Afternoon") == 0)
+        if (strcmp(word, "Afternoon") == 0)               
                 return AFTERNOON;
         if (strcmp(word, "Evening") == 0)
                 return EVENING;
