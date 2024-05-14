@@ -57,60 +57,60 @@ Remove Worker 333333333
 
 Report Workers
 
-#Add Worker Yossi 333333333 35.60 Bartender 4
-#Add Shift 333333333 4 Morning
-#Add Shift 333333333 3 Morning
-#Add Shift 333333333 1 Night
-#
-#Remove Worker 111111111
-#
-#Report Shifts 333333333
-#
-## Add new workers
-#Add Worker Rebecca 123456789 30.00 Waiter 6
-#Add Worker Rachel 987654321 30.00 Waiter 6
-#Add Worker Leah 111222333 30.00 Waiter 6
-#Add Worker Sarah 444555666 30.00 Waiter 6
-#
-## Add shifts
-#Add Shift 123456789 1 Morning
-#Add Shift 123456789 2 Morning
-#Add Shift 123456789 3 Morning
-#Add Shift 123456789 4 Morning
-#Add Shift 123456789 5 Morning
-#Add Shift 123456789 6 Morning
-#
-#Add Shift 987654321 1 Morning
-#Add Shift 987654321 2 Morning
-#Add Shift 987654321 3 Morning
-#
-#Add Shift 111222333 1 Morning
-#Add Shift 111222333 2 Morning
-#Add Shift 111222333 3 Morning
-#Add Shift 111222333 4 Morning
-#Add Shift 111222333 5 Morning
-#
-#Add Shift 444555666 1 Morning
-#Add Shift 444555666 2 Morning
-#
-#
-## Reports
-#Report Workers
-#Report Workers Bartender
-#
-#Report Shifts 123456789
-#Report Shifts 987654321
-#Report Shifts 111222333
-#Report Shifts 444555666
-#Report Shifts 333333333
-#Report Shifts 555555555
-#Report Shifts 444444444
-#
-#Report Shift Details 3 Morning
-#Report Shift Details 3 Afternoon
-#Report Shift Details 3 Evening
-#Report Shift Details 3 Night
-#Report Shift Details 1 Night
-#Report Shift Details 2 Afternoon
-#Report Shift Details 4 Evening
-#Report Shift Details 5 Morning
+Add Worker Yossi 333333333 35.60 Bartender 4
+Add Shift 333333333 4 Morning
+Add Shift 333333333 3 Morning
+Add Shift 333333333 1 Night
+
+Remove Worker 111111111
+
+Report Shifts 333333333
+
+# Add new workers
+Add Worker Rebecca 123456789 30.00 Waiter 6
+Add Worker Rachel 987654321 30.00 Waiter 6
+Add Worker Leah 111222333 30.00 Waiter 6
+Add Worker Sarah 444555666 30.00 Waiter 6
+
+# Add shifts
+Add Shift 123456789 1 Morning
+Add Shift 123456789 2 Morning
+Add Shift 123456789 3 Morning
+Add Shift 123456789 4 Morning
+Add Shift 123456789 5 Morning
+Add Shift 123456789 6 Morning
+
+Add Shift 987654321 1 Morning
+Add Shift 987654321 2 Morning
+Add Shift 987654321 3 Morning
+
+Add Shift 111222333 1 Morning
+Add Shift 111222333 2 Morning
+Add Shift 111222333 3 Morning
+Add Shift 111222333 4 Morning
+Add Shift 111222333 5 Morning
+
+Add Shift 444555666 1 Morning
+Add Shift 444555666 2 Morning
+
+
+# Reports
+Report Workers
+Report Workers Bartender
+
+Report Shifts 123456789
+Report Shifts 987654321
+Report Shifts 111222333
+Report Shifts 444555666
+Report Shifts 333333333
+Report Shifts 555555555
+Report Shifts 444444444
+
+Report Shift Details 3 Morning
+Report Shift Details 3 Afternoon
+Report Shift Details 3 Evening
+Report Shift Details 3 Night
+Report Shift Details 1 Night
+Report Shift Details 2 Afternoon
+Report Shift Details 4 Evening
+Report Shift Details 5 Morning

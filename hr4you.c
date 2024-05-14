@@ -295,10 +295,11 @@ void AddShift(char *Buffer)
                                         return;    
                                 }
 
-                                for(Id_Place=0;Id_Place<MAX_WORKERS;Id_Place++)
+                                for(int i =0;i<MAX_WORKERS;i++)
                                 {
-                                        if(CurrentId==workers[Id_Place].id)
+                                        if(CurrentId==workers[i].id)
                                         {
+                                                Id_Place = i;
                                                 ValidId=true;
                                                 break;
                                         }
@@ -328,18 +329,16 @@ void AddShift(char *Buffer)
                                         return;
                                 }
 
-                                if (workers[Id_Place].shift_type[Shift_Day]!=0)
+                                if (Shift_Day && workers[Id_Place].shift_type[Shift_Day - 1]!=0)
                                 {
-                                        printf("hello - %d -\n", workers[Id_Place].id);
                                         prog2_report_error_message(SHIFT_ALREADY_EXISTS);
                                         return;
                                 }
 
                                 for(int ShiftPlace=0; ShiftPlace<MaxDays;ShiftPlace++)
                                 {
-                                        if(workers[ShiftPlace].shift_type[Shift_Day]!=0)
-                                                CounterShift++; 
-                                        
+                                        if(workers[Id_Place].shift_type[ShiftPlace]!=0)
+                                                CounterShift++;                                        
                                 }
 
                                 if(CounterShift>=workers[Id_Place].number_of_shifts)
@@ -348,13 +347,14 @@ void AddShift(char *Buffer)
                                         return;
                                 }
 
-                                workers[Id_Place].shift_type[Shift_Day] = ShiftTypeConvertor(word);
+                                workers[Id_Place].shift_type[Shift_Day - 1] = ShiftTypeConvertor(word);
                                 break;
                 }
                 
                 word = strtok(NULL, " \n\t\r");
                 i++;
         }
+        
 }
 
 void RemoveWorker(char *Buffer)
@@ -379,7 +379,14 @@ void RemoveWorker(char *Buffer)
                                 {
                                         Worker__Exist=false;
                                         workers[WorkerPlace].id=0;
-                                        workers[WorkerPlace].number_of_shifts=0;                                        
+                                        strcpy(workers[WorkerPlace].name, "");
+                                        workers[WorkerPlace].number_of_shifts=0;      
+                                        workers[WorkerPlace].hourly_wage=0;    
+                                        workers[WorkerPlace].role = 0;
+                                        for (int x = 0; x < MaxDays; x++)
+                                        {
+                                                workers[WorkerPlace].shift_type[x] = 0;
+                                        }                             
                                         break;
                                 }
                         }
@@ -436,7 +443,7 @@ void ReportShiftDetails(char *Buffer, FILE **FileOutput)
                                 for (size_t i = 0; i < MAX_WORKERS; i++)
                                 {
                                         if(workers[i].id){                                                
-                                                if(workers[i].shift_type[day] == type)
+                                                if(workers[i].shift_type[day - 1] == type)
                                                 {
                                                         num_of_workers++;
                                                         total_payment += workers[i].hourly_wage * HOURS_PER_SHIFT;
@@ -483,11 +490,14 @@ void ReportShifts(char *Buffer, FILE **FileOutput)
 
                                                 if(workers[i].number_of_shifts)
                                                 {
-                                                        for (size_t j = 0; j < workers[i].number_of_shifts; i++)
+                                                        for (int j = 0; j < Max_Week_Shift; j++)
                                                         {
                                                                 type = workers[i].shift_type[j];
-                                                                day = j + 1;
-                                                                prog2_report_shift(stdout, day, type);
+                                                                if(type)
+                                                                {
+                                                                        day = j + 1;
+                                                                        prog2_report_shift(stdout, day, type);
+                                                                }
                                                         }
                                                         
                                                 }
